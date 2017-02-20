@@ -416,8 +416,7 @@ class Chef
           cl = Chef::CookbookLoader.new(config[:cookbook_path])
           cl.load_cookbooks
           cl.each do |cname, cookbook|
-            icname = Chef::Cookbook::CookbookVersionLoader.new(cl[cname].root_paths[0]).inferred_cookbook_name
-            generate_metadata(icname)
+            generate_metadata(cname.to_s)
           end
         
          begin
